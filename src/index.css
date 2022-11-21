@@ -272,3 +272,11 @@ Story
   text-transform: capitalize;
   font-size: 0.85rem;
 }
+.footer {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.footer-link {
+  text-decoration: none;
+  color: black;
+}

@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { useGlobalContext } from './context';
 
 function Buttons() {
+  const {isLoading, page, nbPages, handlePage}= useGlobalContext()
   return (
-    <div>Buttons</div>
+    <div className='btn-container'>
+      <button disabled={isLoading} onClick={()=>handlePage("dec")}>prev</button>
+      <p>{page + 1} from {nbPages}</p>
+      <button disabled={isLoading} onClick={()=>handlePage("inc")}>next</button>
+    </div>
   )
 }
 

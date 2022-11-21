@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from "react";
+import React, { useEffect, useReducer, useContext } from "react";
 import reducer from "./reducer";
 import {
   SET_LOADING,
@@ -45,12 +45,16 @@ const AppProvider = ({ children }) => {
     dispatch({ type: HANDLE_SEARCH, payload: query });
   };
 
+  const handlePage = (value)=> {
+    dispatch({type:HANDLE_PAGE, payload: value})
+  }
+
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
-  }, [state.query]);
+  }, [state.query, state.page]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory, handleSearch }}>
+    <AppContext.Provider value={{ ...state, removeStory, handleSearch, handlePage }}>
       {children}
     </AppContext.Provider>
   );
